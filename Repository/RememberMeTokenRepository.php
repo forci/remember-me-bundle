@@ -52,6 +52,11 @@ class RememberMeTokenRepository extends EntityRepository {
                 ->setParameter('area', '%' . $area . '%');
         }
 
+        if ($username = $filter->getUsername()) {
+            $builder->andWhere('t.username LIKE :username')
+                ->setParameter('username', '%' . $username . '%');
+        }
+
         $dateMin = $filter->getDateMin();
         $dateMax = $filter->getDateMax();
         if ($dateMin && $dateMax) {

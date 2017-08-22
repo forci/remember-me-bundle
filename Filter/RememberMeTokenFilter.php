@@ -10,6 +10,9 @@ class RememberMeTokenFilter extends AbstractFilter {
     protected $userId;
 
     /** @var string|null */
+    protected $username;
+
+    /** @var string|null */
     protected $area;
 
     /** @var \DateTime|null */
@@ -24,6 +27,14 @@ class RememberMeTokenFilter extends AbstractFilter {
 
     public function setUserId(?int $userId) {
         $this->userId = $userId;
+    }
+
+    public function getUsername(): ?string {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username) {
+        $this->username = $username;
     }
 
     public function getArea(): ?string {

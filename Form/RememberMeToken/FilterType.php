@@ -20,6 +20,9 @@ class FilterType extends BaseFilterType {
             ->add('userId', TextFilterType::class, [
                 'placeholder' => 'User ID'
             ])
+            ->add('username', TextFilterType::class, [
+                'placeholder' => 'Username'
+            ])
             ->add('area', TextFilterType::class, [
                 'placeholder' => 'Firewall Area'
             ])
