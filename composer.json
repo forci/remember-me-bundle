@@ -18,7 +18,7 @@
     "require": {
         "php": "~7.1",
         "symfony/symfony": "~2.0|~3.0",
-        "wucdbm/quick-ui-bundle": "dev-master"
+        "wucdbm/quick-ui-bundle": "~0.1"
     },
     "autoload": {
         "psr-4": { "Forci\\Bundle\\RememberMeBundle\\": "" }
