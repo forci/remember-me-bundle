@@ -1,9 +1,3 @@
-forci_remember_me_token_root:
-    path: /
-    defaults:
-        _controller: FrameworkBundle:Redirect:redirect
-        route: forci_remember_me_token_list
-
 forci_remember_me_token_list:
     path:      /list
     defaults: { _controller: RememberMeBundle:RememberMeToken:list }

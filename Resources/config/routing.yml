@@ -1,3 +1,9 @@
+forci_remember_me_root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: forci_remember_me_token_list
+
 forci_remember_me_token:
     resource: routing/remember_me_token.yml
     prefix: /token
