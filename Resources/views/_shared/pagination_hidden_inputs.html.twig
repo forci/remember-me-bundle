@@ -1,0 +1,8 @@
+{% if value is iterable %}
+    {% for key, val in value %}
+        {% include '@RememberMe/_shared/pagination_hidden_inputs.html.twig' with {name: name~'['~key~']', value: val} %}
+    {% endfor %}
+{% else %}
+    {#<p>{{ name }} - {{ value }}</p>#}
+    <input type="hidden" name="{{ name }}" value="{{ value }}" />
+{% endif %}

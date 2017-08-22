@@ -1,0 +1,11 @@
+.filter-form {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.navbar>.container .navbar-brand {
+    padding: 4px 15px;
+}

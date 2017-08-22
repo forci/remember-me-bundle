@@ -1,0 +1,73 @@
+{% block location_country_country_translation_widget %}
+    <div class="col-sm-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ form.vars.value.locale }}
+            </div>
+            <div class="panel-body">
+                {{ form_rest(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block location_country_country_translation_label '' %}
+
+{% block location_city_city_translation_widget %}
+    <div class="col-sm-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ form.vars.value.locale }}
+            </div>
+            <div class="panel-body">
+                {{ form_rest(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block location_city_city_translation_label '' %}
+
+{% block passenger_title_translation_widget %}
+    <div class="col-sm-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ form.vars.value.locale }}
+            </div>
+            <div class="panel-body">
+                {{ form_rest(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block passenger_title_translation_label '' %}
+
+{% block type_airport_select24_widget %}
+    {{ form_widget(form) }}
+
+    {% defer 'forms' %}
+        $("#{{ form.vars.id }}").addClass('form-control col-xs-2');
+        {#$("#{{ form.vars.id }}").select2({#}
+            {#placeholder: "{{ form.vars.placeholder }}",#}
+            {#width: 'resolve',#}
+            {#minimumInputLength: 2,#}
+            {#allowClear: true,#}
+            {#ajax: { // instead of writing the function to execute the request we use Select2's convenient helper#}
+                {#url: "{{ path('airlines_airport_select2_search') }}",#}
+                {#dataType: 'json',#}
+                {#quietMillis: 250,#}
+                {#data: function (params) { // params.term params.page#}
+                    {#return {#}
+                        {#search: params.term#}
+                    {#};#}
+                {#},#}
+                {#processResults: function (data, page) { // parse the results into the format expected by Select2.#}
+                    {#// since we are using custom formatting functions we do not need to alter the remote JSON data#}
+                    {#return { results: data };#}
+                {#},#}
+                {#cache: true#}
+            {#}#}
+        {#});#}
+    {% enddefer %}
+{% endblock %}

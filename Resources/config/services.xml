@@ -1,0 +1,42 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="security.authentication.rememberme.services.persistent"
+                 class="Forci\Bundle\RememberMeBundle\Service\PersistentTokenBasedRememberMeServices"
+                 parent="security.authentication.rememberme.services.abstract"
+                 public="false"
+                 abstract="true">
+            <call method="setConfig">
+                <argument>%remember_me.config%</argument>
+            </call>
+            <call method="setDoctrineCache">
+                <argument type="expression">service(container.hasParameter('remember_me.doctrine_cache') ? parameter('remember_me.doctrine_cache') : 'remember_me.doctrine_cache')</argument>
+            </call>
+            <call method="setSessionRepository">
+                <argument type="service" id="remember_me.repo.session"/>
+            </call>
+        </service>
+
+        <service id="remember_me.cache" class="Symfony\Component\Cache\Adapter\ArrayAdapter" shared="false"/>
+        <service id="remember_me.doctrine_cache" class="Doctrine\Common\Cache\ArrayCache" shared="false"/>
+
+        <service id="remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider">
+            <argument type="service" id="remember_me.repo.remember_me_token"/>
+            <argument type="expression">service(container.hasParameter('remember_me.cache') ? parameter('remember_me.cache') : 'remember_me.cache')</argument>
+            <call method="setSessionHandler">
+                <argument type="service" id="remember_me.session_handler" on-invalid="null"/>
+            </call>
+        </service>
+
+        <service id="Forci\Bundle\RememberMeBundle\Twig\TokenExtension">
+            <argument type="collection"/>  <!--  User Providers -->
+            <argument>%remember_me.config%</argument>
+            <tag name="twig.extension"/>
+        </service>
+
+    </services>
+
+</container>

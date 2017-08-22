@@ -1,0 +1,30 @@
+{% extends '@RememberMe/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="title">Remember Me Tokens</h4>
+            {% embed '@RememberMe/_shared/filter_list.html.twig' %}
+                {% block headings %}
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Date Created</th>
+                    <th>Last Used</th>
+                    <th>User Id</th>
+                    <th>Sessions</th>
+                    <th>Series</th>
+                    <th>Value</th>
+                    <th>Area</th>
+                    <th>Class</th>
+                    <th>Actions</th>
+                {% endblock %}
+                {% block columns %}
+                    {% include '@RememberMe/RememberMeToken/list_row.html.twig' %}
+                {% endblock %}
+                {% block refresh path('forci_remember_me_token_refresh', {id: entity.id}) %}
+            {% endembed %}
+        </div>
+    </div>
+
+{% endblock %}

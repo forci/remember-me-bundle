@@ -1,0 +1,41 @@
+<td>{{ entity.id }}</td>
+<td>
+    {{ entity.username }}
+</td>
+<td>
+    {{ entity.dateCreated|date('d.m.Y H:i:s') }}
+</td>
+<td>
+    {{ entity.lastUsed|date('d.m.Y H:i:s') }}
+</td>
+<td>
+    {{ entity.userId|default('-') }}
+</td>
+<td>
+    {{ entity.sessions|length }}
+</td>
+<td>
+    <span data-toggle="tooltip" title="{{ entity.series }}">
+        {{ entity.series|slice(0, 10) ~ '...' }}
+    </span>
+</td>
+<td>
+    <span data-toggle="tooltip" title="{{ entity.value }}">
+        {{ entity.value|slice(0, 10) ~ '...' }}
+    </span>
+</td>
+<td>
+    <span rel="tooltip" title="{{ entity.area }}">{{ entity.area|rememberMeAreaName|default('-') }}</span>
+</td>
+<td>
+    {{ entity.class }}
+</td>
+<td>
+    <a href="{{ path('forci_remember_me_token_view', {id: entity.id}) }}" class="btn btn-sm btn-primary">
+        View
+    </a>
+    <a href="{{ path('forci_remember_me_token_delete', {id: entity.id}) }}" class="btn btn-sm btn-danger"
+       data-confirm="Are you sure you want to remove token {{ entity.series }}?">
+        Delete
+    </a>
+</td>

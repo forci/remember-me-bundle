@@ -1,0 +1,60 @@
+{% use "bootstrap_3_layout.html.twig" %}
+
+{% use '@RememberMe/_shared/form/fields.html.twig' %}
+
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+        {% if form.parent %}<span class="help-block">{% else %}<div class="alert alert-danger">{% endif %}
+        <ul class="list-unstyled">
+        {%- for error in errors -%}
+            <li>
+                <i class="fa fa-exclamation-circle"></i>
+                {{ error.message }}
+            </li>
+        {%- endfor -%}
+    </ul>
+        {% if form.parent %}</span>{% else %}</div>{% endif %}
+    {%- endif %}
+{%- endblock form_errors %}
+
+{% block checkbox_label -%}
+    {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' mt-checkbox mt-checkbox-outline')|trim}) %}
+    {{- block('checkbox_radio_label') -}}
+{%- endblock checkbox_label %}
+
+{% block radio_label -%}
+    {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' mt-radio mt-radio-outline')|trim}) %}
+    {{- block('checkbox_radio_label') -}}
+{%- endblock radio_label %}
+
+{% block checkbox_radio_label %}
+    {# Do not display the label if widget is not defined in order to prevent double label rendering #}
+    {% if widget is defined %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if parent_label_class is defined %}
+            {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ parent_label_class)|trim}) %}
+        {% endif %}
+        {% if label is not same as(false) and label is empty %}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+        {{- widget|raw }} {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
+        {# This span are required for the new metronic theme #}
+        <span></span>
+        </label>
+    {% endif %}
+{% endblock checkbox_radio_label %}
+
+{% block checkbox_widget %}
+    {% set attr = attr|merge({'data-toggle': 'checkbox'}) %}
+    {{ parent() }}
+{% endblock checkbox_widget %}

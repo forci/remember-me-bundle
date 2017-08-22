@@ -1,0 +1,3 @@
+forci_remember_me_token:
+    resource: routing/remember_me_token.yml
+    prefix: /token

@@ -1,0 +1,45 @@
+{% extends '@WucdbmWucdbm/form/filter/theme.html.twig' %}
+
+{% use '@RememberMe/_shared/form/fields.html.twig' %}
+
+{% block admin_date_text_widget -%}
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+        <div class="row">
+            <div class="input-group input-clear">
+                {% if compound %}
+                    {{ block('form_widget_compound') }}
+                {% else %}
+                    {{ block('form_widget_simple') }}
+                {% endif %}
+                <span class="input-group-btn">
+                    <button class="btn default input-clear" type="button">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+{%- endblock admin_date_text_widget %}
+
+{# Keep those for BC for a while ... #}
+{#{% block type_airport_select2_row %}#}
+    {#{{ form_widget(form) }}#}
+{#{% endblock type_airport_select2_row %}#}
+
+{#{% block type_airport_select2_label %}#}
+
+{#{% endblock type_airport_select2_label %}#}
+
+{#{% block type_airport_select2_widget %}#}
+
+    {#<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">#}
+        {#<div class="row">#}
+            {#{{ parent() }}#}
+        {#</div>#}
+    {#</div>#}
+
+{#{% endblock %}#}
+
+{% block type_airport_select24_row %}
+    {{ form_widget(form) }}
+{% endblock %}

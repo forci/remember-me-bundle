@@ -1,0 +1,144 @@
+{% extends '@RememberMe/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 col-lg-8">
+            <h4 class="title">Remember Me Token</h4>
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                    <td>
+                        <strong>Username</strong>
+                    </td>
+                    <td>
+                        <strong>Date Created</strong>
+                    </td>
+                    <td>
+                        <strong>Last Used</strong>
+                    </td>
+                    <td>
+                        <strong>User Id</strong>
+                    </td>
+                    <td>
+                        <strong>Class</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ token.username }}
+                    </td>
+                    <td>
+                        {{ token.dateCreated|date('d.m.Y H:i:s') }}
+                    </td>
+                    <td>
+                        {{ token.lastUsed|date('d.m.Y H:i:s') }}
+                    </td>
+                    <td>
+                        {{ token.userId|default('-') }}
+                    </td>
+                    <td>
+                        {{ token.class }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>OS</strong>
+                    </td>
+                    <td>
+                        <strong>Browser</strong>
+                    </td>
+                    <td>
+                        <strong>Brand</strong>
+                    </td>
+                    <td>
+                        <strong>Device</strong>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ token.os }} {{ token.osVersion }}
+                    </td>
+                    <td>
+                        {{ token.browser }} {{ token.browserVersion }}
+                    </td>
+                    <td>
+                        {{ token.device }}
+                    </td>
+                    <td>
+                        {{ token.brand }}
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>Area</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        {{ token.area|rememberMeAreaName }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>Series</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        {{ token.series }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <strong>Value</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        {{ token.value }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <a href="{{ path('forci_remember_me_token_delete', {id: token.id}) }}" class="btn btn-danger pull-right"
+                           data-confirm="Are you sure you want to remove token {{ token.series }}?">
+                            Delete token
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 col-lg-4">
+            {% if token.sessions|length %}
+                <h4 class="title">Remember Me Token</h4>
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Session ID</th>
+                        <th>Remove</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for session in token.sessions %}
+                        <tr>
+                            <td>{{ session.id }}</td>
+                            <td>{{ session.identifier }}</td>
+                            <td>
+                                <a href="{{ path('forci_remember_me_session_delete', {id: session.id}) }}" class="btn btn-sm btn-danger">
+                                    Remove
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

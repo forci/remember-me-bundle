@@ -1,0 +1,27 @@
+{
+    "name": "forci/remember-me-bundle",
+    "type": "symfony-bundle",
+    "description": "Persistent Remember Me bundle for Symfony applications",
+    "keywords": ["symfony remember me", "remember me", "symfony", "wucdbm"],
+    "authors": [
+        {
+            "name": "Martin Kirilov",
+            "email": "wucdbm@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Tatjana Mincheva",
+            "email": "tatjana@forci.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+        "symfony/symfony": "~2.0|~3.0",
+        "wucdbm/quick-ui-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "Forci\\Bundle\\RememberMeBundle\\": "" }
+    },
+    "license": "GPL-3.0"
+}
