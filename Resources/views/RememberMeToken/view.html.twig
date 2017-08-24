@@ -120,7 +120,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Session ID</th>
-                        <th>Remove</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -128,11 +127,6 @@
                         <tr>
                             <td>{{ session.id }}</td>
                             <td>{{ session.identifier }}</td>
-                            <td>
-                                <a href="{{ path('forci_remember_me_session_delete', {id: session.id}) }}" class="btn btn-sm btn-danger">
-                                    Remove
-                                </a>
-                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

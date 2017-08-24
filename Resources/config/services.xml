@@ -26,9 +26,7 @@
         <service id="remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider">
             <argument type="service" id="remember_me.repo.remember_me_token"/>
             <argument type="expression">service(container.hasParameter('remember_me.cache') ? parameter('remember_me.cache') : 'remember_me.cache')</argument>
-            <call method="setSessionHandler">
-                <argument type="service" id="remember_me.session_handler" on-invalid="null"/>
-            </call>
+            <argument type="service" id="session.handler" on-invalid="null"/>
         </service>
 
         <service id="Forci\Bundle\RememberMeBundle\Twig\TokenExtension">

@@ -6,8 +6,10 @@ use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
 use Forci\Bundle\RememberMeBundle\Entity\Session;
 use Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;
 use Symfony\Component\Security\Core\Authentication\RememberMe\TokenProviderInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Exception\TokenNotFoundException;
 
 class DoctrineEntityProvider implements TokenProviderInterface {
@@ -21,13 +23,11 @@ class DoctrineEntityProvider implements TokenProviderInterface {
     /** @var \SessionHandlerInterface|null */
     protected $sessionHandler;
 
-    public function setSessionHandler(?\SessionHandlerInterface $sessionHandler) {
-        $this->sessionHandler = $sessionHandler;
-    }
-
-    public function __construct(RememberMeTokenRepository $tokenRepository, AdapterInterface $cache) {
+    public function __construct(RememberMeTokenRepository $tokenRepository, AdapterInterface $cache,
+                                ?\SessionHandlerInterface $sessionHandler) {
         $this->tokenRepository = $tokenRepository;
         $this->cache = $cache;
+        $this->sessionHandler = $sessionHandler;
     }
 
     public function loadTokenBySeries($series): RememberMeToken {
@@ -49,6 +49,8 @@ class DoctrineEntityProvider implements TokenProviderInterface {
     }
 
     public function deleteToken(RememberMeToken $token) {
+        $this->tokenRepository->remove($token);
+
         // First try to invalidate all sessions
         if ($this->sessionHandler) {
             /** @var Session $session */
@@ -57,7 +59,6 @@ class DoctrineEntityProvider implements TokenProviderInterface {
             }
         }
 
-        $this->tokenRepository->remove($token);
         $this->uncacheTokenBySeries($token->getSeries());
     }
 

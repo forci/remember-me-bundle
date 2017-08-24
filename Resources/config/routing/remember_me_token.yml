@@ -10,10 +10,6 @@ forci_remember_me_token_delete:
     path:      /delete/{id}
     defaults:  { _controller: RememberMeBundle:RememberMeToken:delete }
 
-forci_remember_me_session_delete:
-    path:      /session/{id}/delete
-    defaults:  { _controller: RememberMeBundle:RememberMeToken:deleteSession }
-
 forci_remember_me_token_refresh:
     path:      /refresh/{id}
     defaults:  { _controller: RememberMeBundle:RememberMeToken:refresh }

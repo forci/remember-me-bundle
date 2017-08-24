@@ -23,11 +23,10 @@ class RememberMeExtension extends Extension {
         $container->setParameter('remember_me.session_class', $config['session_class']);
         $container->setParameter('remember_me.cache', $config['cache']);
         $container->setParameter('remember_me.doctrine_cache', $config['doctrine_cache']);
-        $container->setParameter('remember_me.session_handler_service_id', $config['session_handler']);
 
-        if ($config['storage'] == 'ORM') {
+        if ('ORM' == $config['storage']) {
             $loader->load('services/orm_subscriber.xml');
-        } elseif ($config['storage'] == 'ODM') {
+        } elseif ('ODM' == $config['storage']) {
             $loader->load('services/odm_subscriber.xml');
         }
 

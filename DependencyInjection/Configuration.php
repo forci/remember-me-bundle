@@ -16,25 +16,6 @@ class Configuration implements ConfigurationInterface {
 
         $rootNode
             ->children()
-//                ->scalarNode('user_class')
-//                    ->defaultNull()
-//                    ->validate()
-//                    ->ifTrue(function ($class) {
-//                        return !class_exists($class);
-//                    })->thenInvalid('Please provide an existing class for user_class or leave empty')
-//                    ->ifTrue(function ($class) use ($requiredUserProperties) {
-//                        foreach ($requiredUserProperties as $property) {
-//                            if (!property_exists($class, $property)) {
-//                                return true;
-//                            }
-//                        }
-//                        return false;
-//                        })->thenInvalid(sprintf('The class you provide for user_class should have the following properties: %s', implode(", ", $requiredUserProperties)))
-//                    ->end()
-//                ->end()
-                ->arrayNode('area_map')
-                    ->prototype('scalar')->end()
-                ->end()
                 ->scalarNode('token_class')
                     ->defaultValue(RememberMeToken::class)
                     ->validate()
@@ -57,8 +38,11 @@ class Configuration implements ConfigurationInterface {
                     })->thenInvalid(sprintf('The class you provide for token_class should extend %s', Session::class))
                     ->end()
                 ->end()
+                ->arrayNode('area_map')
+                    ->prototype('scalar')->end()
+                ->end()
                 ->enumNode('storage')
-                    ->values(['ORM', 'ODM'])
+                    ->values(['ORM']) // , 'ODM' // add ODM once it's implemented
                     ->defaultValue('ORM')
                 ->end()
                 ->scalarNode('cache') // Symfony Cache
@@ -66,9 +50,6 @@ class Configuration implements ConfigurationInterface {
                 ->end()
                 ->scalarNode('doctrine_cache') // Doctrine Cache
                     ->defaultValue('remember_me.doctrine_cache')
-                ->end()
-                ->scalarNode('session_handler') // Session Handler Service ID
-                    ->defaultNull()
                 ->end()
             ->end();
 

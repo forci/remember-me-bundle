@@ -2,7 +2,6 @@ $(function () {
     $(document).on('refresh', '[data-refresh]', function (e, params) {
         var action = $(this).data('refresh');
         if (!action) {
-            bootbox.alert('An action was completed, but the elements on the page were not refreshed.');
             return;
         }
         params = params || {};

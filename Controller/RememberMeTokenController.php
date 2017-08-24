@@ -2,13 +2,17 @@
 
 namespace Forci\Bundle\RememberMeBundle\Controller;
 
+use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
 use Forci\Bundle\RememberMeBundle\Filter\RememberMeTokenFilter;
 use Forci\Bundle\RememberMeBundle\Form\RememberMeToken\FilterType;
-use Frontend\Controller\BaseController;
+use Forci\Bundle\RememberMeBundle\Repository\SessionRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Http\RememberMe\AbstractRememberMeServices;
 
-class RememberMeTokenController extends BaseController {
+class RememberMeTokenController extends Controller {
 
     public function listAction(Request $request) {
         $repo = $this->container->get('remember_me.repo.remember_me_token');
@@ -45,11 +49,26 @@ class RememberMeTokenController extends BaseController {
         $repo = $this->container->get('remember_me.repo.remember_me_token');
         $token = $repo->findOneById($id);
 
+        $response = $this->getDeleteTokenResponse($request);
+
         if ($token) {
             $provider = $this->container->get('remember_me.provider.doctrine_entity_provider');
             $provider->deleteToken($token);
+
+            $symfonySession = $request->getSession();
+            /** @var SessionRepository $session */
+            foreach ($token->getSessions() as $session) {
+                if ($session->getIdentifier() == $symfonySession->getId()) {
+                    $this->logout($token, $request, $response);
+                    break;
+                }
+            }
         }
 
+        return $response;
+    }
+
+    protected function getDeleteTokenResponse(Request $request): Response {
         if ($request->isXmlHttpRequest()) {
             return $this->json([
                 'success' => true,
@@ -64,34 +83,22 @@ class RememberMeTokenController extends BaseController {
         return $this->redirectToRoute('forci_remember_me_token_list');
     }
 
-    public function deleteSessionAction(int $id, Request $request) {
-        $repo = $this->container->get('remember_me.repo.session');
-        $session = $repo->findOneById($id);
+    protected function logout(RememberMeToken $persistentToken, Request $request, Response $response) {
+        $tokenStorage = $this->get('security.token_storage');
+        $token = $tokenStorage->getToken();
 
-        if ($session) {
-            try {
-                /** @var \SessionHandlerInterface $sessionHandler */
-                $sessionHandler = $this->container->get('remember_me.session_handler');
-                $sessionHandler->destroy($session->getIdentifier());
-            } catch (ServiceNotFoundException $e) {
-                // service not found
-            }
-
-            $repo->remove($session);
+        if (!$token) {
+            return;
         }
 
-        if ($request->isXmlHttpRequest()) {
-            return $this->json([
-                'success' => true,
-                'remove'  => true
-            ]);
-        }
+        $tokenStorage->setToken(null);
 
-        if ($referer = $request->headers->get('referer')) {
-            return $this->redirect($referer);
+        $serviceId = sprintf('security.authentication.rememberme.services.persistent.%s', $persistentToken->getArea());
+        if ($this->container->has($serviceId)) {
+            /** @var AbstractRememberMeServices $services */
+            $services = $this->container->get($serviceId);
+            $services->logout($request, $response, $token);
         }
-
-        return $this->redirectToRoute('forci_remember_me_token_list');
     }
 
     public function refreshAction(int $id) {
