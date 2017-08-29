@@ -1,6 +1,6 @@
 <td>{{ entity.id }}</td>
 <td>
-    {{ entity.username }}
+    {{ entity.username|default('-') }}
 </td>
 <td>
     {{ entity.dateCreated|date('d.m.Y H:i:s') }}

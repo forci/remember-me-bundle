@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ token.username }}
+                        {{ token.username|default('-') }}
                     </td>
                     <td>
                         {{ token.dateCreated|date('d.m.Y H:i:s') }}
