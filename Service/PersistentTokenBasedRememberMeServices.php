@@ -160,12 +160,11 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices 
 
         $tokenValue = base64_encode(random_bytes(64));
 
-        $persistentToken = new RememberMeToken(
-            get_class($user = $token->getUser()),
-            $user->getUsername(),
+        $persistentToken = $this->createTokenEntity(
             $series,
             $tokenValue,
-            new \DateTime(),
+            get_class($user = $token->getUser()),
+            $user->getUsername(),
             // Custom, set the User ID if available
             is_callable([$user, 'getId']) ? $user->getId() : null
         );
@@ -196,6 +195,7 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices 
             )
         );
     }
+
 
     protected function addSession(RememberMeToken $token, Request $request) {
         $session = $request->getSession();
@@ -235,6 +235,26 @@ class PersistentTokenBasedRememberMeServices extends AbstractRememberMeServices 
         $class = $this->config['session_class'];
 
         return new $class($token, $sessionId);
+    }
+
+    /**
+     * @param string $series
+     * @param string $tokenValue
+     * @param string $userClass
+     * @param null|string $username
+     * @param int|null $userId
+     * @return RememberMeToken
+     */
+    protected function createTokenEntity(string $series, string $tokenValue, string $userClass, ?string $username, ?int $userId) {
+        $tokenClass = $this->config['token_class'];
+
+        return new $tokenClass(
+            $userClass,
+            $username,
+            $series,
+            $tokenValue,
+            $userId
+        );
     }
 
     protected function fetchPlatformInformation(DeviceAwareInterface $deviceInfo, Request $request) {

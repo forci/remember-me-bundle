@@ -142,7 +142,7 @@ class ORMMappingSubscriber implements EventSubscriber {
 //         */
 //        protected $username;
         if (!$metadata->hasField('username')) {
-            $builder->createField('username', 'string')->columnName('username')->length(200)->build();
+            $builder->createField('username', 'string')->columnName('username')->length(200)->nullable(true)->build();
         }
 
 //        /**

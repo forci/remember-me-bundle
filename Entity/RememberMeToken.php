@@ -60,6 +60,12 @@ class RememberMeToken implements PersistentTokenInterface, DeviceAwareInterface 
         return $this->username;
     }
 
+    public function setUsername(?string $username) {
+        $this->username = $username;
+
+        return $this;
+    }
+
     public function getClass(): ?string {
         return $this->class;
     }
@@ -92,12 +98,13 @@ class RememberMeToken implements PersistentTokenInterface, DeviceAwareInterface 
         $this->sessions = new ArrayCollection($sessions);
     }
 
-    public function __construct(string $class, string $username, string $series, string $tokenValue, \DateTime $lastUsed, int $userId = null) {
+    public function __construct(string $class, ?string $username, string $series, string $tokenValue, int $userId = null) {
         if (empty($class)) {
             throw new \InvalidArgumentException('$class must not be empty.');
         }
-        if ('' === $username || null === $username) {
-            throw new \InvalidArgumentException('$username must not be empty.');
+        // Allow null username
+        if ('' === $username) { //  || null === $username
+            throw new \InvalidArgumentException('$username can be null, but must not be an empty string.');
         }
         if (empty($series)) {
             throw new \InvalidArgumentException('$series must not be empty.');
@@ -113,9 +120,8 @@ class RememberMeToken implements PersistentTokenInterface, DeviceAwareInterface 
         $this->username = $username;
         $this->series = $series;
         $this->value = $tokenValue;
-        $this->lastUsed = $lastUsed;
         $this->userId = $userId;
-        $this->dateCreated = new \DateTime();
+        $this->dateCreated = $this->lastUsed = new \DateTime();
         $this->sessions = new ArrayCollection();
     }
 
@@ -143,12 +149,6 @@ class RememberMeToken implements PersistentTokenInterface, DeviceAwareInterface 
 
     public function setClass(string $class) {
         $this->class = $class;
-
-        return $this;
-    }
-
-    public function setUsername(string $username) {
-        $this->username = $username;
 
         return $this;
     }
