@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ForciLoginBundle package.
+ * This file is part of the ForciRememberMeBundle package.
  *
  * (c) Martin Kirilov <wucdbm@gmail.com>
  *
@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface {
 
     public function getConfigTreeBuilder() {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('remember_me');
+        $rootNode = $treeBuilder->root('forci_remember_me');
 
         $rootNode
             ->children()

@@ -1,7 +1,7 @@
 <?php
 
 $headerComment = <<<COMMENT
-This file is part of the ForciLoginBundle package.
+This file is part of the ForciRememberMeBundle package.
 
 (c) Martin Kirilov <wucdbm@gmail.com>
 

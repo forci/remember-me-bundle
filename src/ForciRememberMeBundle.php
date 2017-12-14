@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the ForciLoginBundle package.
+ * This file is part of the ForciRememberMeBundle package.
  *
  * (c) Martin Kirilov <wucdbm@gmail.com>
  *
@@ -15,7 +15,7 @@ use Forci\Bundle\RememberMeBundle\DependencyInjection\Compiler\InjectUserProvide
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class RememberMeBundle extends Bundle {
+class ForciRememberMeBundle extends Bundle {
 
     public function build(ContainerBuilder $container) {
         parent::build($container);
