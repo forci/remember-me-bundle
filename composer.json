@@ -20,8 +20,15 @@
         "symfony/symfony": "~2.0|~3.0",
         "wucdbm/quick-ui-bundle": "~0.1"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.8",
+        "wucdbm/php-cs-fixers": "~0.1"
+    },
     "autoload": {
-        "psr-4": { "Forci\\Bundle\\RememberMeBundle\\": "" }
+        "psr-4": { "Forci\\Bundle\\RememberMeBundle\\": "src" }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "license": "GPL-3.0"
 }
