@@ -113,6 +113,6 @@ class DoctrineEntityProvider implements TokenProviderInterface {
     }
 
     protected function generateTokenKey(string $series) {
-        return sprintf('remember_me.token.%s', md5($series));
+        return sprintf('forci_remember_me.token.%s', md5($series));
     }
 }

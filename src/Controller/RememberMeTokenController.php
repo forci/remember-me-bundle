@@ -23,7 +23,7 @@ use Symfony\Component\Security\Http\RememberMe\AbstractRememberMeServices;
 class RememberMeTokenController extends Controller {
 
     public function listAction(Request $request) {
-        $repo = $this->container->get('remember_me.repo.remember_me_token');
+        $repo = $this->container->get('forci_remember_me.repo.remember_me_token');
         $filter = new RememberMeTokenFilter();
         $pagination = $filter->getPagination()->enable();
         $filterForm = $this->createForm(FilterType::class, $filter);
@@ -40,7 +40,7 @@ class RememberMeTokenController extends Controller {
     }
 
     public function viewAction(int $id) {
-        $token = $this->container->get('remember_me.repo.remember_me_token')->findOneById($id);
+        $token = $this->container->get('forci_remember_me.repo.remember_me_token')->findOneById($id);
 
         if (!$token) {
             return $this->redirectToRoute('forci_remember_me_token_list');
@@ -54,13 +54,13 @@ class RememberMeTokenController extends Controller {
     }
 
     public function deleteAction(int $id, Request $request) {
-        $repo = $this->container->get('remember_me.repo.remember_me_token');
+        $repo = $this->container->get('forci_remember_me.repo.remember_me_token');
         $token = $repo->findOneById($id);
 
         $response = $this->getDeleteTokenResponse($request);
 
         if ($token) {
-            $provider = $this->container->get('remember_me.provider.doctrine_entity_provider');
+            $provider = $this->container->get('forci_remember_me.provider.doctrine_entity_provider');
             $provider->deleteToken($token);
 
             $symfonySession = $request->getSession();
@@ -110,7 +110,7 @@ class RememberMeTokenController extends Controller {
     }
 
     public function refreshAction(int $id) {
-        $repo = $this->container->get('remember_me.repo.remember_me_token');
+        $repo = $this->container->get('forci_remember_me.repo.remember_me_token');
         $token = $repo->findOneById($id);
 
         $data = [

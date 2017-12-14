@@ -10,28 +10,28 @@
                  public="false"
                  abstract="true">
             <call method="setConfig">
-                <argument>%remember_me.config%</argument>
+                <argument>%forci_remember_me.config%</argument>
             </call>
             <call method="setDoctrineCache">
-                <argument type="expression">service(container.hasParameter('remember_me.doctrine_cache') ? parameter('remember_me.doctrine_cache') : 'remember_me.doctrine_cache')</argument>
+                <argument type="expression">service(container.hasParameter('forci_remember_me.doctrine_cache') ? parameter('forci_remember_me.doctrine_cache') : 'forci_remember_me.doctrine_cache')</argument>
             </call>
             <call method="setSessionRepository">
-                <argument type="service" id="remember_me.repo.session"/>
+                <argument type="service" id="forci_remember_me.repo.session"/>
             </call>
         </service>
 
-        <service id="remember_me.cache" class="Symfony\Component\Cache\Adapter\ArrayAdapter" shared="false"/>
-        <service id="remember_me.doctrine_cache" class="Doctrine\Common\Cache\ArrayCache" shared="false"/>
+        <service id="forci_remember_me.cache" class="Symfony\Component\Cache\Adapter\ArrayAdapter" shared="false"/>
+        <service id="forci_remember_me.doctrine_cache" class="Doctrine\Common\Cache\ArrayCache" shared="false"/>
 
-        <service id="remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider">
-            <argument type="service" id="remember_me.repo.remember_me_token"/>
-            <argument type="expression">service(container.hasParameter('remember_me.cache') ? parameter('remember_me.cache') : 'remember_me.cache')</argument>
+        <service id="forci_remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider">
+            <argument type="service" id="forci_remember_me.repo.remember_me_token"/>
+            <argument type="expression">service(container.hasParameter('forci_remember_me.cache') ? parameter('forci_remember_me.cache') : 'forci_remember_me.cache')</argument>
             <argument type="service" id="session.handler" on-invalid="null"/>
         </service>
 
         <service id="Forci\Bundle\RememberMeBundle\Twig\TokenExtension">
             <argument type="collection"/>  <!--  User Providers -->
-            <argument>%remember_me.config%</argument>
+            <argument>%forci_remember_me.config%</argument>
             <tag name="twig.extension"/>
         </service>
 

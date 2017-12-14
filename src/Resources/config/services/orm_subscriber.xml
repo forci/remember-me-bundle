@@ -3,29 +3,29 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="remember_me.doctrine_mapping_subscriber.class">Forci\Bundle\RememberMeBundle\Subscriber\ORMMappingSubscriber</parameter>
-        <parameter key="remember_me.token.token_repository_class">Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository</parameter>
-        <parameter key="remember_me.token.session_repository_class">Forci\Bundle\RememberMeBundle\Repository\SessionRepository</parameter>
+        <parameter key="forci_remember_me.doctrine_mapping_subscriber.class">Forci\Bundle\RememberMeBundle\Subscriber\ORMMappingSubscriber</parameter>
+        <parameter key="forci_remember_me.token.token_repository_class">Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository</parameter>
+        <parameter key="forci_remember_me.token.session_repository_class">Forci\Bundle\RememberMeBundle\Repository\SessionRepository</parameter>
     </parameters>
 
     <services>
-        <service id="remember_me.repo.abstract" abstract="true">
+        <service id="forci_remember_me.repo.abstract" abstract="true">
             <factory service="doctrine.orm.default_entity_manager" method="getRepository"/>
         </service>
 
-        <service id="remember_me.repo.remember_me_token" class="%remember_me.token.token_repository_class%" parent="remember_me.repo.abstract">
-            <argument>%remember_me.token_class%</argument>
+        <service id="forci_remember_me.repo.remember_me_token" class="%forci_remember_me.token.token_repository_class%" parent="forci_remember_me.repo.abstract">
+            <argument>%forci_remember_me.token_class%</argument>
         </service>
 
-        <service id="remember_me.repo.session" class="%remember_me.token.session_repository_class%" parent="remember_me.repo.abstract">
-            <argument>%remember_me.session_class%</argument>
+        <service id="forci_remember_me.repo.session" class="%forci_remember_me.token.session_repository_class%" parent="forci_remember_me.repo.abstract">
+            <argument>%forci_remember_me.session_class%</argument>
         </service>
 
-        <service id="remember_me.doctrine_mapping_subscriber" class="%remember_me.doctrine_mapping_subscriber.class%">
-            <argument>%remember_me.token_class%</argument>
-            <argument>%remember_me.session_class%</argument>
-            <argument>%remember_me.token.token_repository_class%</argument>
-            <argument>%remember_me.token.session_repository_class%</argument>
+        <service id="forci_remember_me.doctrine_mapping_subscriber" class="%forci_remember_me.doctrine_mapping_subscriber.class%">
+            <argument>%forci_remember_me.token_class%</argument>
+            <argument>%forci_remember_me.session_class%</argument>
+            <argument>%forci_remember_me.token.token_repository_class%</argument>
+            <argument>%forci_remember_me.token.session_repository_class%</argument>
             <tag name="doctrine.event_subscriber"/>
         </service>
     </services>

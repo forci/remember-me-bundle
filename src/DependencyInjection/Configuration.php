@@ -54,10 +54,10 @@ class Configuration implements ConfigurationInterface {
                     ->defaultValue('ORM')
                 ->end()
                 ->scalarNode('cache') // Symfony Cache
-                    ->defaultValue('remember_me.cache')
+                    ->defaultValue('forci_remember_me.cache')
                 ->end()
                 ->scalarNode('doctrine_cache') // Doctrine Cache
-                    ->defaultValue('remember_me.doctrine_cache')
+                    ->defaultValue('forci_remember_me.doctrine_cache')
                 ->end()
             ->end();
 

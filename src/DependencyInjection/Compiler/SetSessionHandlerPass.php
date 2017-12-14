@@ -20,7 +20,7 @@ class SetSessionHandlerPass implements CompilerPassInterface {
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container) {
-        $serviceId = $container->getParameter('remember_me.session_handler_service_id');
+        $serviceId = $container->getParameter('forci_remember_me.session_handler_service_id');
 
         if (!$container->hasDefinition($serviceId)) {
             throw new \InvalidArgumentException(sprintf('The provided Session Handler Service ID %s is missing', $serviceId));
@@ -31,6 +31,6 @@ class SetSessionHandlerPass implements CompilerPassInterface {
             throw new \InvalidArgumentException(sprintf('The provided Session Handler Service ID %s is not an instance of %s', $serviceId, \SessionHandlerInterface::class));
         }
 
-        $container->setAlias('remember_me.session_handler', $serviceId);
+        $container->setAlias('forci_remember_me.session_handler', $serviceId);
     }
 }

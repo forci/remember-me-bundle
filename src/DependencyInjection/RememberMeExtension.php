@@ -27,11 +27,11 @@ class RememberMeExtension extends Extension {
             new FileLocator(__DIR__.'/../Resources/config')
         );
 
-        $container->setParameter('remember_me.config', $config);
-        $container->setParameter('remember_me.token_class', $config['token_class']);
-        $container->setParameter('remember_me.session_class', $config['session_class']);
-        $container->setParameter('remember_me.cache', $config['cache']);
-        $container->setParameter('remember_me.doctrine_cache', $config['doctrine_cache']);
+        $container->setParameter('forci_remember_me.config', $config);
+        $container->setParameter('forci_remember_me.token_class', $config['token_class']);
+        $container->setParameter('forci_remember_me.session_class', $config['session_class']);
+        $container->setParameter('forci_remember_me.cache', $config['cache']);
+        $container->setParameter('forci_remember_me.doctrine_cache', $config['doctrine_cache']);
 
         if ('ORM' == $config['storage']) {
             $loader->load('services/orm_subscriber.xml');
