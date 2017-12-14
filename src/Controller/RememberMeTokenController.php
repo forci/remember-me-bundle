@@ -36,7 +36,7 @@ class RememberMeTokenController extends Controller {
             'filterForm' => $filterForm->createView()
         ];
 
-        return $this->render('@RememberMe/RememberMeToken/list.html.twig', $data);
+        return $this->render('@ForciRememberMe/RememberMeToken/list.html.twig', $data);
     }
 
     public function viewAction(int $id) {
@@ -50,7 +50,7 @@ class RememberMeTokenController extends Controller {
             'token' => $token
         ];
 
-        return $this->render('@RememberMe/RememberMeToken/view.html.twig', $data);
+        return $this->render('@ForciRememberMe/RememberMeToken/view.html.twig', $data);
     }
 
     public function deleteAction(int $id, Request $request) {
@@ -117,6 +117,6 @@ class RememberMeTokenController extends Controller {
             'entity' => $token
         ];
 
-        return $this->render('@RememberMe/RememberMeToken/list_row.html.twig', $data);
+        return $this->render('@ForciRememberMe/RememberMeToken/list_row.html.twig', $data);
     }
 }

@@ -18,7 +18,7 @@
     "require": {
         "php": "~7.1",
         "symfony/symfony": "~2.0|~3.0",
-        "wucdbm/quick-ui-bundle": "~0.1"
+        "wucdbm/quick-ui-bundle": "~0.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.8",

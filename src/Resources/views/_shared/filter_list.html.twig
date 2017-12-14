@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-12">
         {% block filters %}
-            {% form_theme filterForm '@RememberMe/_shared/form/filter_theme.html.twig' %}
+            {% form_theme filterForm '@ForciRememberMe/_shared/form/filter_theme.html.twig' %}
             {{ form(filterForm) }}
         {% endblock %}
         <br>
@@ -32,6 +32,6 @@
 
 {% block pagination %}
     <div class="row">
-        {% include '@RememberMe/_shared/pagination.html.twig' %}
+        {% include '@ForciRememberMe/_shared/pagination.html.twig' %}
     </div>
 {% endblock %}

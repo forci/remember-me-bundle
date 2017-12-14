@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <form class="form-horizontal" role="form">
                 {% for name, value in pagination.vars('page') %}
-                    {% include '@RememberMe/_shared/pagination_hidden_inputs.html.twig' with {name: name, value: value} %}
+                    {% include '@ForciRememberMe/_shared/pagination_hidden_inputs.html.twig' with {name: name, value: value} %}
                 {% endfor %}
                 <div class="form-group">
                     <label class="control-label col-lg-8 col-md-8 col-sm-8 col-xs-4" for="">
