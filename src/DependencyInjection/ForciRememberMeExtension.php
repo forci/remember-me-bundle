@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-class RememberMeExtension extends Extension {
+class ForciRememberMeExtension extends Extension {
 
     public function load(array $configs, ContainerBuilder $container) {
         $configuration = $this->getConfiguration($configs, $container);
