@@ -3,9 +3,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="forci_remember_me.doctrine_mapping_subscriber.class">Forci\Bundle\RememberMeBundle\Subscriber\ORMMappingSubscriber</parameter>
-        <parameter key="forci_remember_me.token.token_repository_class">Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository</parameter>
-        <parameter key="forci_remember_me.token.session_repository_class">Forci\Bundle\RememberMeBundle\Repository\SessionRepository</parameter>
+        <parameter key="forci_remember_me.doctrine_mapping_subscriber.class">Forci\Bundle\RememberMe\Subscriber\ORMMappingSubscriber</parameter>
+        <parameter key="forci_remember_me.token.token_repository_class">Forci\Bundle\RememberMe\Repository\RememberMeTokenRepository</parameter>
+        <parameter key="forci_remember_me.token.session_repository_class">Forci\Bundle\RememberMe\Repository\SessionRepository</parameter>
     </parameters>
 
     <services>

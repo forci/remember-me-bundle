@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Repository;
+namespace Forci\Bundle\RememberMe\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Forci\Bundle\RememberMeBundle\Entity\Session;
+use Forci\Bundle\RememberMe\Entity\Session;
 
 class SessionRepository extends EntityRepository {
 

@@ -5,7 +5,7 @@
     <services>
 
         <service id="security.authentication.rememberme.services.persistent"
-                 class="Forci\Bundle\RememberMeBundle\Service\PersistentTokenBasedRememberMeServices"
+                 class="Forci\Bundle\RememberMe\Service\PersistentTokenBasedRememberMeServices"
                  parent="security.authentication.rememberme.services.abstract"
                  public="false"
                  abstract="true">
@@ -23,13 +23,13 @@
         <service id="forci_remember_me.cache" class="Symfony\Component\Cache\Adapter\ArrayAdapter" shared="false"/>
         <service id="forci_remember_me.doctrine_cache" class="Doctrine\Common\Cache\ArrayCache" shared="false"/>
 
-        <service id="forci_remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider">
+        <service id="forci_remember_me.provider.doctrine_entity_provider" class="Forci\Bundle\RememberMe\Provider\DoctrineEntityProvider">
             <argument type="service" id="forci_remember_me.repo.remember_me_token"/>
             <argument type="expression">service(container.hasParameter('forci_remember_me.cache') ? parameter('forci_remember_me.cache') : 'forci_remember_me.cache')</argument>
             <argument type="service" id="session.handler" on-invalid="null"/>
         </service>
 
-        <service id="Forci\Bundle\RememberMeBundle\Twig\TokenExtension">
+        <service id="Forci\Bundle\RememberMe\Twig\TokenExtension">
             <argument type="collection"/>  <!--  User Providers -->
             <argument>%forci_remember_me.config%</argument>
             <tag name="twig.extension"/>

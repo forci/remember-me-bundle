@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\DependencyInjection\Compiler;
+namespace Forci\Bundle\RememberMe\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,7 +21,7 @@ class InjectUserProvidersPass implements CompilerPassInterface {
      * {@inheritdoc}
      */
     public function process(ContainerBuilder $container) {
-        $extension = $container->getDefinition('Forci\Bundle\RememberMeBundle\Twig\TokenExtension');
+        $extension = $container->getDefinition('Forci\Bundle\RememberMe\Twig\TokenExtension');
 
         $userProviderIds = [];
 

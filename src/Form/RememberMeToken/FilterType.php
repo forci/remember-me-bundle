@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Form\RememberMeToken;
+namespace Forci\Bundle\RememberMe\Form\RememberMeToken;
 
-use Forci\Bundle\RememberMeBundle\Filter\RememberMeTokenFilter;
+use Forci\Bundle\RememberMe\Filter\RememberMeTokenFilter;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Wucdbm\Bundle\QuickUIBundle\Form\Filter\BaseFilterType;

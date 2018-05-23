@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Entity;
+namespace Forci\Bundle\RememberMe\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\RememberMeBundle\Repository\SessionRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\RememberMe\Repository\SessionRepository")
  */
 class Session {
 

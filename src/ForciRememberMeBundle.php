@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle;
+namespace Forci\Bundle\RememberMe;
 
-use Forci\Bundle\RememberMeBundle\DependencyInjection\Compiler\InjectUserProvidersPass;
+use Forci\Bundle\RememberMe\DependencyInjection\Compiler\InjectUserProvidersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

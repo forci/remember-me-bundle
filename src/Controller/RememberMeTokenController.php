@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Controller;
+namespace Forci\Bundle\RememberMe\Controller;
 
-use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
-use Forci\Bundle\RememberMeBundle\Filter\RememberMeTokenFilter;
-use Forci\Bundle\RememberMeBundle\Form\RememberMeToken\FilterType;
-use Forci\Bundle\RememberMeBundle\Repository\SessionRepository;
+use Forci\Bundle\RememberMe\Entity\RememberMeToken;
+use Forci\Bundle\RememberMe\Filter\RememberMeTokenFilter;
+use Forci\Bundle\RememberMe\Form\RememberMeToken\FilterType;
+use Forci\Bundle\RememberMe\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

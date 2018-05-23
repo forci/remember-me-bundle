@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Provider;
+namespace Forci\Bundle\RememberMe\Provider;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 

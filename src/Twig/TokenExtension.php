@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Twig;
+namespace Forci\Bundle\RememberMe\Twig;
 
-use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
-use Forci\Bundle\RememberMeBundle\Provider\FindUserByIdInterface;
+use Forci\Bundle\RememberMe\Entity\RememberMeToken;
+use Forci\Bundle\RememberMe\Provider\FindUserByIdInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;

@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Repository;
+namespace Forci\Bundle\RememberMe\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
-use Forci\Bundle\RememberMeBundle\Entity\Session;
-use Forci\Bundle\RememberMeBundle\Filter\RememberMeTokenFilter;
+use Forci\Bundle\RememberMe\Entity\RememberMeToken;
+use Forci\Bundle\RememberMe\Entity\Session;
+use Forci\Bundle\RememberMe\Filter\RememberMeTokenFilter;
 use Wucdbm\Bundle\QuickUIBundle\Repository\QuickUIRepositoryTrait;
 
 class RememberMeTokenRepository extends EntityRepository {

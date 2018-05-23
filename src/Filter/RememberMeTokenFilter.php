@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Filter;
+namespace Forci\Bundle\RememberMe\Filter;
 
 use Wucdbm\Bundle\QuickUIBundle\Filter\AbstractFilter;
 

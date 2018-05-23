@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Provider;
+namespace Forci\Bundle\RememberMe\Provider;
 
-use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
-use Forci\Bundle\RememberMeBundle\Entity\Session;
-use Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository;
+use Forci\Bundle\RememberMe\Entity\RememberMeToken;
+use Forci\Bundle\RememberMe\Entity\Session;
+use Forci\Bundle\RememberMe\Repository\RememberMeTokenRepository;
 use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;
 use Symfony\Component\Security\Core\Authentication\RememberMe\TokenProviderInterface;

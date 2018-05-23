@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Service;
+namespace Forci\Bundle\RememberMe\Service;
 
 use DeviceDetector\DeviceDetector;
 use DeviceDetector\Parser\Device\DeviceParserAbstract;
 use Doctrine\Common\Cache\CacheProvider;
-use Forci\Bundle\RememberMeBundle\Entity\DeviceAwareInterface;
-use Forci\Bundle\RememberMeBundle\Entity\RememberMeToken;
-use Forci\Bundle\RememberMeBundle\Entity\Session;
-use Forci\Bundle\RememberMeBundle\Provider\DoctrineEntityProvider;
-use Forci\Bundle\RememberMeBundle\Provider\FindUserByIdInterface;
-use Forci\Bundle\RememberMeBundle\Repository\SessionRepository;
+use Forci\Bundle\RememberMe\Entity\DeviceAwareInterface;
+use Forci\Bundle\RememberMe\Entity\RememberMeToken;
+use Forci\Bundle\RememberMe\Entity\Session;
+use Forci\Bundle\RememberMe\Provider\DoctrineEntityProvider;
+use Forci\Bundle\RememberMe\Provider\FindUserByIdInterface;
+use Forci\Bundle\RememberMe\Repository\SessionRepository;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

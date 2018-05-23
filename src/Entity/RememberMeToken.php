@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Entity;
+namespace Forci\Bundle\RememberMe\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Authentication\RememberMe\PersistentTokenInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Forci\Bundle\RememberMeBundle\Repository\RememberMeTokenRepository")
+ * @ORM\Entity(repositoryClass="Forci\Bundle\RememberMe\Repository\RememberMeTokenRepository")
  */
 class RememberMeToken implements PersistentTokenInterface, DeviceAwareInterface {
 

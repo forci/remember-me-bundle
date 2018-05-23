@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Entity;
+namespace Forci\Bundle\RememberMe\Entity;
 
 trait DeviceAwareTrait {
 

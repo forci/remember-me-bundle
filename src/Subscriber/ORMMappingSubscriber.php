@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Forci\Bundle\RememberMeBundle\Subscriber;
+namespace Forci\Bundle\RememberMe\Subscriber;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\DBAL\Platforms;
@@ -24,8 +24,8 @@ use Doctrine\ORM\Id\UuidGenerator;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\ORMException;
-use Forci\Bundle\RememberMeBundle\Entity\DeviceAwareInterface;
-use Forci\Bundle\RememberMeBundle\Entity\DeviceAwareTrait;
+use Forci\Bundle\RememberMe\Entity\DeviceAwareInterface;
+use Forci\Bundle\RememberMe\Entity\DeviceAwareTrait;
 
 class ORMMappingSubscriber implements EventSubscriber {
 
