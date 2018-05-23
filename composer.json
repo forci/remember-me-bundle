@@ -28,7 +28,7 @@
         "wucdbm/php-cs-fixers": "~0.1"
     },
     "autoload": {
-        "psr-4": { "Forci\\Bundle\\RememberMeBundle\\": "src" }
+        "psr-4": { "Forci\\Bundle\\RememberMe\\": "src" }
     },
     "config": {
         "bin-dir": "bin"
