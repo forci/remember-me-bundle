@@ -1,15 +1,15 @@
 forci_remember_me_token_list:
     path:      /list
-    defaults: { _controller: RememberMeBundle:RememberMeToken:list }
+    defaults: { _controller: ForciRememberMeBundle:RememberMeToken:list }
 
 forci_remember_me_token_view:
-    path:      /view/{id}
-    defaults: { _controller: RememberMeBundle:RememberMeToken:view }
+    path:      /{id}/view
+    defaults: { _controller: ForciRememberMeBundle:RememberMeToken:view }
 
 forci_remember_me_token_delete:
-    path:      /delete/{id}
-    defaults:  { _controller: RememberMeBundle:RememberMeToken:delete }
+    path:      /{id}/delete
+    defaults:  { _controller: ForciRememberMeBundle:RememberMeToken:delete }
 
 forci_remember_me_token_refresh:
-    path:      /refresh/{id}
-    defaults:  { _controller: RememberMeBundle:RememberMeToken:refresh }
+    path:      /{id}/refresh
+    defaults:  { _controller: ForciRememberMeBundle:RememberMeToken:refresh }
