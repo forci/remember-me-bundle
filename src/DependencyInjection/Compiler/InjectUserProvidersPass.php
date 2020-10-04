@@ -27,7 +27,7 @@ class InjectUserProvidersPass implements CompilerPassInterface {
 
         foreach ($container->findTaggedServiceIds('security.remember_me_aware') as $serviceId => $attributes) {
             foreach ($attributes as $attribute) {
-                if (isset($attribute['provider'])) {
+                if (isset($attribute['provider']) && 'none' !== $attribute['provider']) {
                     $userProviderIds[] = $attribute['provider'];
                 }
             }
