@@ -159,7 +159,7 @@ class ORMMappingSubscriber implements EventSubscriber {
 //         */
 //        protected $area;
         if (!$metadata->hasField('area')) {
-            $builder->createField('area', 'string')->columnName('area')->length(200)->build();
+            $builder->createField('area', 'string')->columnName('area')->length(200)->nullable(true)->build();
         }
 
 //        /**
